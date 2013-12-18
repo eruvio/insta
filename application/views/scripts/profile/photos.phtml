@@ -1,0 +1,54 @@
+<div>
+    
+    <hr/>Upload Images<hr/>
+    <form >
+        <input id="fileupload" type="file" name="files[]" data-url="<?php echo $this->url(array('controller' => 'ajax', 'action' => 'upload')); ?>" multiple>
+    </form>
+    <br/><br/>
+</div>
+
+<section class="row image-container">
+    <?php foreach($this->images as $image) : ?>
+
+        <div class="span4">
+            <img src="<?php echo $image->url_thumb; ?>" data-id="<?php echo $image->id; ?>" class="img-thumbnail thumbnail">
+            <a href="javascript:void(0);" class="delete">Delete</a> |
+            <a href="javascript:void(0);" class="mark-profile">Mark as Profile Image</a>
+        </div>
+
+    <?php endforeach; ?>
+</section>
+
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        
+        // Bind AJAX deletion
+        $('.delete').click(function(){
+            // @todo
+        })
+        
+        // Bind AJAX profile image selection
+        $('.mark-profile').click(function(){
+            // @todo
+        })
+        
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                
+                var $newImage = $('<img>').attr({
+                    src: data.result.image_src,
+                    class: 'thumbnail img-thumbnail'
+                });
+                
+                $('.image-container').append($newImage);
+                
+            }
+        });
+        
+    })
+    
+    
+    
+</script>

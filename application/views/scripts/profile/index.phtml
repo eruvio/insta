@@ -1,0 +1,11 @@
+<section class="row">
+
+<?php foreach($this->images as $image) : ?>
+
+    <div class="span3">
+        <img class="thumbnail" src="<?php echo $image->url_thumb; ?>" />
+    </div>
+
+<?php endforeach; ?>
+
+</section>
