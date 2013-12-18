@@ -47,7 +47,7 @@ class AjaxController
                     $source_imagex = imagesx($source_image);
                     
                     // Validate the size of upload
-                    if($source_imagex < max($this->widths)){
+                    if($source_imagex < max($this->imageWidths)){
                         @unlink($uploadDir . '/' . $filename);
                         return false;
                     }
